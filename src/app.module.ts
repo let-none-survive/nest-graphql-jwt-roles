@@ -19,7 +19,6 @@ import { MoviesModule } from './movies/movies.module';
     }),
     AuthModule,
     MoviesModule,
-    // AuthModule
   ],
 })
 export class AppModule {}
