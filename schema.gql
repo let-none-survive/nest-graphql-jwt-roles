@@ -1,0 +1,80 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  createdAt: Date!
+  updatedAt: Date!
+  role: UserRoles!
+  email: String!
+}
+
+"""Date custom scalar type"""
+scalar Date
+
+enum UserRoles {
+  admin
+  moderator
+  worker
+}
+
+type UserToken {
+  token: String!
+  user: User!
+}
+
+type Movie {
+  id: ID!
+  title: String!
+  description: String!
+}
+
+type Movies {
+  movies: [Movie!]!
+  count: Float!
+}
+
+type Query {
+  user(id: Float!): User!
+  users(skip: Int = 0, take: Int = 25): [User!]!
+  movie(id: Float!): Movie!
+  moviesList: Movies!
+}
+
+type Mutation {
+  register(input: AuthRegisterInput!): UserToken!
+  login(input: AuthLoginInput!): UserToken!
+  addMovie(input: AddMovieInput!): Movie!
+  updateMovie(input: UpdateMovieInput!, id: Float!): Movie!
+  removeMovie(id: Float!): Boolean!
+}
+
+input AuthRegisterInput {
+  email: String!
+  password: String!
+  role: String!
+  firstName: String!
+  lastName: String!
+}
+
+input AuthLoginInput {
+  email: String!
+  password: String!
+}
+
+input AddMovieInput {
+  title: String!
+  description: String!
+}
+
+input UpdateMovieInput {
+  title: String!
+  description: String!
+}
+
+type Subscription {
+  userAdded: User!
+}
