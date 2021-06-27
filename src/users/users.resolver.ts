@@ -22,9 +22,4 @@ export class UsersResolver {
   users(@Args() userArgs: UserArgs) {
     return this.userService.findAll(userArgs);
   }
-
-  @Subscription(() => User)
-  userAdded() {
-    return pubSub.asyncIterator('userAdded');
-  }
 }
