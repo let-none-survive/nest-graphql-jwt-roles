@@ -11,7 +11,7 @@ import { UserRolesEnum } from 'src/users/enums/user-roles.enum';
 
 @Resolver(() => Movie)
 export class MovieResolver {
-  constructor(private readonly moviesService: MoviesService) { }
+  constructor(private readonly moviesService: MoviesService) {}
 
   @Query(() => Movie)
   movie(@Args('id') id: number) {
